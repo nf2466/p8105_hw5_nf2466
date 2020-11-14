@@ -25,7 +25,7 @@ Read in the data
 
 ```{r}
 homicide_df = 
-  read.csv("data/homicide-data.csv")%>%
+  read_csv("data/homicide-data.csv")%>%
   mutate(
     city_state = str_c(city, state, sep="_"),
     resolved = case_when(disposition == "Closed by arrest" ~"solved",
@@ -94,5 +94,41 @@ unsolved_plot =
 unsolved_plot
 ```
 
+## Problem 2
+
+Create a tidy dataframe containing data from all participants, including the subject ID, arm, and observations over time:
+
+Read in data:
+
+```{r}
+path_df = 
+  tibble(
+  path = list.files("data/problem_2/data")) %>%
+  mutate(
+    path = str_c("data/problem_2/data", path, sep = "/"),
+    data = map(.x = path, ~read_csv(.x))
+  )%>%
+  unnest(data)%>%
+  mutate(
+    path = str_replace(path,"data/problem_2/data/",""),
+    path = str_remove(path, ".csv")
+  )%>%
+  separate(path, c("arm", "ID"))%>%
+  pivot_longer(cols = starts_with("week"),
+               names_to = "week",
+               names_prefix = "week_",
+               values_to = "obs")
+spaghetti = 
+path_df %>%
+  group_by(arm, ID)%>%
+  ggplot(aes( x = week, y = obs, group = ID)) +
+  geom_line(aes(color=ID))+
+  facet_grid(.~arm)
+
+spaghetti
+```
+
+
+From the sphaghetti plot, we can see that compared to the control group, the subjects in the experimental group had an upward trend in value as time went on. The control group values stayed around the same value when compared to the experimental arm.
 
 
