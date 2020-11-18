@@ -205,9 +205,9 @@ null_plot
 ```
 
 Plot showing the average estimate of μ on the y axis and the true value of μ on the x axis. 
-Overlaid a second plot the average estimate of $\hat{μ}$ only in samples for which the null was rejected on the y axis and the true value of μ on the x axis. 
+Overlaid a second plot the average estimate of μ^ only in samples for which the null was rejected on the y axis and the true value of μ on the x axis. 
 
-The sample average of $\hat{μ}$ across tests for which the null is rejected approximately equal to the true value of μ as the true value of mu increases.As the true value of each sample's μ gets further away from the null, the more likely $\hat{μ}$ will reject the null hypothesis, so the average of mu_estimates in total and that reject the null will be more similar. We see that there is some difference between the mean estimates between the total mean and the mean of the estimates that reject the null hypothesis when μ = 1 and μ = 2 since the proportion of estimates that reject the null are lower (the effect size from the null is smaller).  
+The sample average of μ^ across tests for which the null is rejected approximately equal to the true value of μ as the true value of mu increases.As the true value of each sample's μ gets further away from the null, the more likely μ^ will reject the null hypothesis, so the average of mu_estimates in total and that reject the null will be more similar. We see that there is some difference between the mean estimates between the total mean and the mean of the estimates that reject the null hypothesis when μ = 1 and μ = 2 since the proportion of estimates that reject the null are lower (the effect size from the null is smaller).  
 
 
 ```{r}
